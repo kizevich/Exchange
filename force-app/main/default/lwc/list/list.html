@@ -1,0 +1,12 @@
+<template>
+    <div class="slds-size_3-of-3">
+        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+            <template for:each={exchanges} for:item="exchange"> 
+                <c-line 
+                    key={exchange.Id}
+                    currency={exchange}>
+                </c-line>  
+            </template>
+        </div>
+    </div>
+</template>

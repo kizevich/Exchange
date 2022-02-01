@@ -1,0 +1,22 @@
+<template>
+    <div class="wrapper">
+        <section class="content">
+            <c-menu
+                onselectedcurrency={handleInCurrencySelected}>
+            </c-menu>
+            <c-menu
+                onselectedcurrency={handleOutCurrencySelected}>
+            </c-menu>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="text" label={currencyIn} onchange={handleInputChange}></lightning-input>
+            </div>
+    
+            <div class="slds-m-vertical_medium">
+                <p>{currencyOut} = <span class="slds-text-heading_small">{outputValue}</span></p>
+            </div>
+            <main class="main">
+                <c-list></c-list>
+            </main>    
+        </section>
+    </div>
+</template>

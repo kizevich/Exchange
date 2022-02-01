@@ -1,0 +1,16 @@
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <!-- Simple -->
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-button-menu alternative-text="Show menu" label={value} onselect={handleClick} variant="border-filled" menu-alignment="auto">
+                <template for:each={exchanges} for:item="exchange">
+                    <lightning-menu-item
+                        key={exchange.id}
+                        value={exchange.Name}
+                        label={exchange.Name}>
+                    </lightning-menu-item> 
+                </template>
+            </lightning-button-menu>
+        </div>
+    </div>
+</template>
