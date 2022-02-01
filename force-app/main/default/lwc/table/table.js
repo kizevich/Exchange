@@ -29,23 +29,13 @@ export default class Table extends LightningElement {
         if(this.selectedCurrencyId) {
             this.currencyOut = currencyEvent.detail.value;
             selectedExchange = getExchangeByName(this.currencyOut);
-            this.out__c = selectedExchange.Out__c;
+            this.out__c = selectedExchange.Out__c /selectedExchange.Factor__c;
         }
     } 
     
     handleInputChange(event) {
         this.inputValue = event.detail.value;
-        if (this.currencyIn == 'RUB') {
-            this.inputValue /= 100;
-        } else if (this.currencyIn == 'PLN') {
-            this.inputValue /= 10;
-        }
         this.outputValue = (this.inputValue * this.in__c) / this.out__c;
-        if (this.currencyOut == 'RUB') {
-            this.outputValue *= 100;
-        } else if (this.currencyOut == 'PLN') {
-            this.outputValue *= 10;
-        }
     }
 
     connectedCallback() {
@@ -61,8 +51,4 @@ export default class Table extends LightningElement {
     //     console.log(error);
     //     }
     // }
-
-    getExchangeByName(name){
-        return this.exchanges.find(Exchange__c => Exchange__c.Name == name);
-    }
 }
