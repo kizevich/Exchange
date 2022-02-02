@@ -2,9 +2,11 @@
     <div class="wrapper">
         <section class="content">
             <c-menu
+                exchanges={exchanges}
                 onselectedcurrency={handleInCurrencySelected}>
             </c-menu>
             <c-menu
+                exchanges={exchanges}
                 onselectedcurrency={handleOutCurrencySelected}>
             </c-menu>
             <div class="slds-p-around_medium lgc-bg">
@@ -15,7 +17,7 @@
                 <p>{currencyOut} = <span class="slds-text-heading_small">{outputValue}</span></p>
             </div>
             <main class="main">
-                <c-list></c-list>
+                <c-list exchanges={exchanges}></c-list>
             </main>    
         </section>
     </div>

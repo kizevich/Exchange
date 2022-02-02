@@ -1,19 +1,19 @@
-import { LightningElement, track, wire } from 'lwc';
-import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
+import { LightningElement, track, api, wire } from 'lwc';
+// import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
 
 export default class List extends LightningElement {
-    @track exchanges;
+    @api exchanges;
     @track value;
 
-    @wire(getExchanges)
-    allExchanges({data,error}){
-        if (data) {
-            this.exchanges=data;
-        console.log(data); 
-        } else if (error) {
-        console.log(error);
-        }
-    }
+    // @wire(getExchanges)
+    // allExchanges({data,error}){
+    //     if (data) {
+    //         this.exchanges=data;
+    //     console.log(data); 
+    //     } else if (error) {
+    //     console.log(error);
+    //     }
+    // }
 
     handleClick(clickEvent) {
         const event = new CustomEvent('selectedcurrency', {

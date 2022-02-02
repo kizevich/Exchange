@@ -5,13 +5,7 @@ export default class Line extends LightningElement {
     count;
 
     get countOfCurrency() {
-        if (this.currency.Name == 'PLN') {
-            this.count = 10;
-        } else if(this.currency.Name == 'RUB') {
-            this.count = 100;
-        } else {
-            this.count = 1;
-        }
+        count = this.currency.Factor__c;
         return this.count;
     }
 }

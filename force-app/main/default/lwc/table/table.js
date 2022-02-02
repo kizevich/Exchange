@@ -1,10 +1,10 @@
 import { LightningElement, track, wire } from 'lwc';
 import { getAllExchanges, getExchangeByName } from 'c/data';
-// import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
+import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
 
 export default class Table extends LightningElement {
 
-    exchanges;
+    @track exchanges;
     inputValue;
     outputValue;
     selectedCurrencyId;
@@ -18,7 +18,7 @@ export default class Table extends LightningElement {
 
         if(this.selectedCurrencyId) {
             this.currencyIn = currencyEvent.detail.value;
-            selectedExchange = getExchangeByName(this.currencyIn);
+            selectedExchange = exchanges.find(Exchange__c => Exchange__c.Name == this.currencyIn);
             this.in__c = selectedExchange.In__c / selectedExchange.Factor__c;
         }
     }  
@@ -28,7 +28,7 @@ export default class Table extends LightningElement {
 
         if(this.selectedCurrencyId) {
             this.currencyOut = currencyEvent.detail.value;
-            selectedExchange = getExchangeByName(this.currencyOut);
+            selectedExchange = exchanges.find(Exchange__c => Exchange__c.Name == this.currencyIn);
             this.out__c = selectedExchange.Out__c /selectedExchange.Factor__c;
         }
     } 
@@ -38,17 +38,13 @@ export default class Table extends LightningElement {
         this.outputValue = (this.inputValue * this.in__c) / this.out__c;
     }
 
-    connectedCallback() {
-        this.exchanges = getAllExchanges();
+    @wire(getExchanges)
+    allExchanges({data,error}){
+        if (data) {
+            this.exchanges=data;
+        console.log(data); 
+        } else if (error) {
+        console.log(error);
+        }
     }
-
-    // @wire(getExchanges)
-    // allExchanges({data,error}){
-    //     if (data) {
-    //         this.exchanges=data;
-    //     console.log(data); 
-    //     } else if (error) {
-    //     console.log(error);
-    //     }
-    // }
 }

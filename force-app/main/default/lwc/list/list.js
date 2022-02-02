@@ -1,8 +1,9 @@
-import { LightningElement } from 'lwc';
-import { getAllExchanges } from 'c/data';
+import { LightningElement, wire, api } from 'lwc';
+// import { getAllExchanges } from 'c/data';
 // import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
 
 export default class List extends LightningElement {
+    @api
     exchanges;
 
     // @wire(getExchanges)
@@ -14,8 +15,4 @@ export default class List extends LightningElement {
     //     console.log(error);
     //     }
     // }
-
-    connectedCallback() {
-        this.exchanges = getAllExchanges();
-    }
 }
