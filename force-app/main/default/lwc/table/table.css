@@ -2,3 +2,60 @@
     display: flex;
     align-items: stretch;
 }
+
+.wrapper {
+    background: #003b46;
+    padding: 10px;
+    border-width: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.currency-card-input-line {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2vw;
+}
+
+.slds-form-element {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.currency-card {
+    padding: 10px;
+}
+
+.currency-card-input-line__half {
+    display: flex;
+
+}
+
+.currency-card-input-line__input-erea {
+    background: #cee2e7;  
+    border-radius: 6px;
+    color: #003b46;
+    display: flex;
+    width: 100%;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.currency-card-table {
+    margin-top: 10px;
+}
+
+:host {
+    --sds-c-card-text-color: #003b46;
+    --sds-c-input-text-color: #003b46;
+    --sds-c-input-color-background: transparent;
+    --sds-c-card-color-background: #eff5f7;
+    --sds-c-button-text-color: #003b46;
+    --sds-c-input-color-border: transparent;
+    --lwc-colorBackgroundSelection: #cee2e7;
+}

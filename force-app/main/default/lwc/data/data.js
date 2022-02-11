@@ -1,26 +1,5 @@
-import { wire } from 'lwc';
-import getExchanges from '@salesforce/apex/ComponentUtility.getExchanges';
+import getExchangesApex from '@salesforce/apex/ComponentUtility.getExchanges';
 
-const getAllExchanges = () => {
-    return new Promise(resolve => {
-        getExchanges()
-            .then(data => {
-                resolve(data);
-            })
-            .catch(error => {
-                resolve(error);
-            });
-    });
-    try {
-        return getExchanges();
-    } catch(error) {
-        console.log(error);
-    }
-};
+const getExchanges = () => getExchangesApex();
 
-export const getExchangeByName = function(name) {
-    exchanges = getExchanges();
-    return exchanges.find(Exchange__c => Exchange__c.Name == name);
-};
-
-export { getAllExchanges }
+export { getExchanges }

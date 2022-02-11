@@ -1,24 +1,35 @@
 <template>
-    <div class="wrapper">
-        <section class="content">
-            <c-menu
-                exchanges={exchanges}
-                onselectedcurrency={handleInCurrencySelected}>
-            </c-menu>
-            <c-menu
-                exchanges={exchanges}
-                onselectedcurrency={handleOutCurrencySelected}>
-            </c-menu>
-            <div class="slds-p-around_medium lgc-bg">
-                <lightning-input type="text" label={currencyIn} onchange={handleInputChange}></lightning-input>
+    <lightning-card title="Currency Converter" icon-name="utility:product_transfer">
+        <div class="currency-card">
+            <div class="currency-card-input-line">
+                <div class="currency-card-input-line__half">
+                    <c-menu
+                        class="menu"
+                        name="input"
+                        exchanges={allExchanges}
+                        onselectedcurrency={onCurrencySelected}>
+                    </c-menu>
+                    <div class="currency-card-input-line__input-erea">
+                        <lightning-input type="number" onchange={onInputChange}></lightning-input>
+                    </div>
+                </div>  
+                <div class="currency-card-input-line__half">
+                    <c-menu
+                        class="menu"
+                        name="output"
+                        exchanges={allExchanges}
+                        onselectedcurrency={onCurrencySelected}>
+                    </c-menu>
+                    <div class="currency-card-input-line__input-erea">
+                        <lightning-layout-item class="input" flexibility="auto" padding="around-small">
+                            <div class="output">{outputValue}</div>
+                        </lightning-layout-item>
+                    </div>
+                </div>
             </div>
-    
-            <div class="slds-m-vertical_medium">
-                <p>{currencyOut} = <span class="slds-text-heading_small">{outputValue}</span></p>
+            <div class="currency-card-table">
+                <c-list exchanges={allExchanges}></c-list>
             </div>
-            <main class="main">
-                <c-list exchanges={exchanges}></c-list>
-            </main>    
-        </section>
-    </div>
+        </div>
+    </lightning-card>
 </template>
